@@ -1,5 +1,6 @@
 package com.poraoo.speech;
 
+import android.content.Intent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar mSeekBarPitch;
     private SeekBar mSeekBarSpeed;
     private Button mButtonSpeak;
+    private Button mButtonImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mButtonSpeak = findViewById(R.id.say_button);
+        mButtonImage = findViewById(R.id.image_text);
+
+        mButtonImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ImageToText.class);
+                startActivity(intent);
+            }
+        });
 
         mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
